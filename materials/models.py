@@ -1,6 +1,6 @@
 from django.db import models
 
-from users.models import NULLABLE
+NULLABLE = {'null': True, "blank": True}
 
 
 class Course(models.Model):
@@ -21,7 +21,7 @@ class Lesson(models.Model):
     description = models.TextField(verbose_name='Описание', help_text='Заполните описание', **NULLABLE)
     preview = models.ImageField(upload_to='materials/preview', verbose_name='Фото', help_text='Загрузите фото', **NULLABLE)
     video = models.CharField(max_length=500, verbose_name='Ссылка на видео', help_text='Загрузите видео', **NULLABLE)
-    course = models.ForeignKey(Course, on_delete=models.SET_NULL, verbose_name='Курс', help_text='Укажите курс', **NULLABLE)
+    course = models.ForeignKey(Course, on_delete=models.SET_NULL, **NULLABLE, help_text='Укажите курс', verbose_name='Курс')
 
     def __str__(self):
         return f'{self.lesson_name}'
