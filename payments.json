@@ -1,0 +1,154 @@
+[
+  {
+    "model": "users.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$870000$e9pL1cDyAp61NSM4TkDOez$L/DFNwOnw0kcR7tdLqSRoSj/6jHXbI3TjCc5PrHiPpw=",
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-10-30T09:26:25.334Z",
+      "email": "test1@test1.ru",
+      "phone": null,
+      "avatar": "",
+      "country": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$870000$ZXVC21yPWJ1uF0A0X3U0vi$D4zmbC1QTcit3At8E7mZxGmmn2McgPqRd7/XqHZ4eI8=",
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-10-30T09:26:57.286Z",
+      "email": "test2@test2.ru",
+      "phone": null,
+      "avatar": "",
+      "country": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 4,
+    "fields": {
+      "password": "pbkdf2_sha256$870000$P4B5iPFYDtJmHXF26aLoDP$bKUIrtjV1WleEy78H6zJ0hOGwruK/uXmnqroaeK5C1Y=",
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-10-30T09:27:03.663Z",
+      "email": "test3@test3.ru",
+      "phone": null,
+      "avatar": "",
+      "country": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 5,
+    "fields": {
+      "password": "pbkdf2_sha256$870000$1uyNLrOH5qvatiZDbQPCjt$aefvUhKGZMymEU2ZO2BbxWfKb+1Q+zFFtI8l/Hw9/48=",
+      "last_login": null,
+      "is_superuser": true,
+      "first_name": "Admin",
+      "last_name": "SkyPro",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2024-10-31T07:11:29.034Z",
+      "email": "admin@sky.pro",
+      "phone": null,
+      "avatar": "",
+      "country": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.payments",
+    "pk": 1,
+    "fields": {
+      "user": 2,
+      "paid_course": 5,
+      "paid_lesson": 2,
+      "payment_amount": 1000,
+      "payment_method": null,
+      "payment_date": "2024-10-30"
+    }
+  },
+  {
+    "model": "users.payments",
+    "pk": 2,
+    "fields": {
+      "user": 2,
+      "paid_course": 5,
+      "paid_lesson": 3,
+      "payment_amount": 1000,
+      "payment_method": null,
+      "payment_date": "2024-10-30"
+    }
+  },
+  {
+    "model": "users.payments",
+    "pk": 3,
+    "fields": {
+      "user": 3,
+      "paid_course": 5,
+      "paid_lesson": 2,
+      "payment_amount": 2000,
+      "payment_method": null,
+      "payment_date": "2024-10-30"
+    }
+  },
+  {
+    "model": "users.payments",
+    "pk": 4,
+    "fields": {
+      "user": 3,
+      "paid_course": 5,
+      "paid_lesson": 3,
+      "payment_amount": 2000,
+      "payment_method": null,
+      "payment_date": "2024-10-30"
+    }
+  },
+  {
+    "model": "users.payments",
+    "pk": 5,
+    "fields": {
+      "user": 4,
+      "paid_course": 6,
+      "paid_lesson": 4,
+      "payment_amount": 5000,
+      "payment_method": null,
+      "payment_date": "2024-10-30"
+    }
+  },
+  {
+    "model": "users.payments",
+    "pk": 6,
+    "fields": {
+      "user": 4,
+      "paid_course": 6,
+      "paid_lesson": 5,
+      "payment_amount": 7000,
+      "payment_method": null,
+      "payment_date": "2024-10-30"
+    }
+  }
+]
