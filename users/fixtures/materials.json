@@ -1,5 +1,122 @@
 [
   {
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+      "action_time": "2024-10-31T12:43:29.899Z",
+      "user": 5,
+      "content_type": 3,
+      "object_id": "1",
+      "object_repr": "Moderators",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+      "action_time": "2024-10-31T12:48:17.204Z",
+      "user": 5,
+      "content_type": 3,
+      "object_id": "2",
+      "object_repr": "admin",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+      "action_time": "2024-10-31T12:48:26.651Z",
+      "user": 5,
+      "content_type": 6,
+      "object_id": "5",
+      "object_repr": "Admin SkyPro: admin@sky.pro",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 4,
+    "fields": {
+      "action_time": "2024-10-31T12:48:33.483Z",
+      "user": 5,
+      "content_type": 6,
+      "object_id": "2",
+      "object_repr": " : test1@test1.ru",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 5,
+    "fields": {
+      "action_time": "2024-10-31T12:49:49.169Z",
+      "user": 5,
+      "content_type": 3,
+      "object_id": "1",
+      "object_repr": "Moderators",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 6,
+    "fields": {
+      "action_time": "2024-10-31T12:50:25.485Z",
+      "user": 5,
+      "content_type": 3,
+      "object_id": "3",
+      "object_repr": "users",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 7,
+    "fields": {
+      "action_time": "2024-10-31T12:50:38.263Z",
+      "user": 5,
+      "content_type": 6,
+      "object_id": "3",
+      "object_repr": " : test2@test2.ru",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 8,
+    "fields": {
+      "action_time": "2024-10-31T12:52:33.913Z",
+      "user": 5,
+      "content_type": 3,
+      "object_id": "4",
+      "object_repr": "owner",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 9,
+    "fields": {
+      "action_time": "2024-10-31T12:53:00.561Z",
+      "user": 5,
+      "content_type": 6,
+      "object_id": "4",
+      "object_repr": " : test3@test3.ru",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+    }
+  },
+  {
     "model": "auth.permission",
     "pk": 1,
     "fields": {
@@ -324,6 +441,92 @@
     }
   },
   {
+    "model": "auth.group",
+    "pk": 1,
+    "fields": {
+      "name": "Moderators",
+      "permissions": [
+        26,
+        28,
+        30,
+        32
+      ]
+    }
+  },
+  {
+    "model": "auth.group",
+    "pk": 2,
+    "fields": {
+      "name": "admin",
+      "permissions": [
+        1,
+        2,
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        5,
+        6,
+        7,
+        8,
+        13,
+        14,
+        15,
+        16,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        17,
+        18,
+        19,
+        20,
+        33,
+        34,
+        35,
+        36,
+        21,
+        22,
+        23,
+        24
+      ]
+    }
+  },
+  {
+    "model": "auth.group",
+    "pk": 3,
+    "fields": {
+      "name": "users",
+      "permissions": [
+        28,
+        32
+      ]
+    }
+  },
+  {
+    "model": "auth.group",
+    "pk": 4,
+    "fields": {
+      "name": "owner",
+      "permissions": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32
+      ]
+    }
+  },
+  {
     "model": "contenttypes.contenttype",
     "pk": 1,
     "fields": {
@@ -396,22 +599,32 @@
     }
   },
   {
+    "model": "sessions.session",
+    "pk": "6ulv75z1xlrlpqjh7z1r0rlip93kofpi",
+    "fields": {
+      "session_data": ".eJxVjM0OwiAQhN-FsyH8FBCP3n0GsuxupWogKe3J-O62SQ-auc33zbxFgnUpae08p4nERThx-u0y4JPrDugB9d4ktrrMU5a7Ig_a5a0Rv66H-3dQoJdtjYNyhkfnCI0KlkdtyaLWBOgyKmBP3sfAZgjOm3j2yEblyHkLKgri8wXyEDiM:1t6UW3:x3FvMOCfrINAkKsQbR8zVgBxNiNJivBEmuZfoIMwAfo",
+      "expire_date": "2024-11-14T12:43:07.441Z"
+    }
+  },
+  {
     "model": "users.user",
     "pk": 2,
     "fields": {
-      "password": "1234",
+      "password": "pbkdf2_sha256$870000$e9pL1cDyAp61NSM4TkDOez$L/DFNwOnw0kcR7tdLqSRoSj/6jHXbI3TjCc5PrHiPpw=",
       "last_login": null,
       "is_superuser": false,
       "first_name": "",
       "last_name": "",
       "is_staff": false,
       "is_active": true,
-      "date_joined": "2024-10-30T09:26:25.334Z",
+      "date_joined": "2024-10-30T09:26:25Z",
       "email": "test1@test1.ru",
       "phone": null,
       "avatar": "",
       "country": null,
-      "groups": [],
+      "groups": [
+        1
+      ],
       "user_permissions": []
     }
   },
@@ -419,19 +632,21 @@
     "model": "users.user",
     "pk": 3,
     "fields": {
-      "password": "1234",
+      "password": "pbkdf2_sha256$870000$ZXVC21yPWJ1uF0A0X3U0vi$D4zmbC1QTcit3At8E7mZxGmmn2McgPqRd7/XqHZ4eI8=",
       "last_login": null,
       "is_superuser": false,
       "first_name": "",
       "last_name": "",
       "is_staff": false,
       "is_active": true,
-      "date_joined": "2024-10-30T09:26:57.286Z",
+      "date_joined": "2024-10-30T09:26:57Z",
       "email": "test2@test2.ru",
       "phone": null,
       "avatar": "",
       "country": null,
-      "groups": [],
+      "groups": [
+        3
+      ],
       "user_permissions": []
     }
   },
@@ -439,15 +654,59 @@
     "model": "users.user",
     "pk": 4,
     "fields": {
-      "password": "1234",
+      "password": "pbkdf2_sha256$870000$P4B5iPFYDtJmHXF26aLoDP$bKUIrtjV1WleEy78H6zJ0hOGwruK/uXmnqroaeK5C1Y=",
       "last_login": null,
       "is_superuser": false,
       "first_name": "",
       "last_name": "",
       "is_staff": false,
       "is_active": true,
-      "date_joined": "2024-10-30T09:27:03.663Z",
+      "date_joined": "2024-10-30T09:27:03Z",
       "email": "test3@test3.ru",
+      "phone": null,
+      "avatar": "",
+      "country": null,
+      "groups": [
+        4
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 5,
+    "fields": {
+      "password": "pbkdf2_sha256$870000$1uyNLrOH5qvatiZDbQPCjt$aefvUhKGZMymEU2ZO2BbxWfKb+1Q+zFFtI8l/Hw9/48=",
+      "last_login": "2024-10-31T12:43:07Z",
+      "is_superuser": true,
+      "first_name": "Admin",
+      "last_name": "SkyPro",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2024-10-31T07:11:29Z",
+      "email": "admin@sky.pro",
+      "phone": null,
+      "avatar": "",
+      "country": null,
+      "groups": [
+        2
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 6,
+    "fields": {
+      "password": "pbkdf2_sha256$870000$cjiJnWQzIceC41ee9r52Rq$E+V+7JogiGIV0rjM2dkgdQHrVNvsOGG6VDvPe7pLM3w=",
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-10-31T13:15:03.751Z",
+      "email": "test4@test4.ru",
       "phone": null,
       "avatar": "",
       "country": null,
@@ -464,7 +723,7 @@
       "paid_lesson": 2,
       "payment_amount": 1000,
       "payment_method": null,
-      "payment_date": "2024-10-30"
+      "payment_date": "2024-10-31"
     }
   },
   {
@@ -476,7 +735,7 @@
       "paid_lesson": 3,
       "payment_amount": 1000,
       "payment_method": null,
-      "payment_date": "2024-10-30"
+      "payment_date": "2024-10-31"
     }
   },
   {
@@ -488,7 +747,7 @@
       "paid_lesson": 2,
       "payment_amount": 2000,
       "payment_method": null,
-      "payment_date": "2024-10-30"
+      "payment_date": "2024-10-31"
     }
   },
   {
@@ -500,7 +759,7 @@
       "paid_lesson": 3,
       "payment_amount": 2000,
       "payment_method": null,
-      "payment_date": "2024-10-30"
+      "payment_date": "2024-10-31"
     }
   },
   {
@@ -512,7 +771,7 @@
       "paid_lesson": 4,
       "payment_amount": 5000,
       "payment_method": null,
-      "payment_date": "2024-10-30"
+      "payment_date": "2024-10-31"
     }
   },
   {
@@ -524,7 +783,7 @@
       "paid_lesson": 5,
       "payment_amount": 7000,
       "payment_method": null,
-      "payment_date": "2024-10-30"
+      "payment_date": "2024-10-31"
     }
   },
   {
@@ -533,7 +792,8 @@
     "fields": {
       "course_name": "Sapromat",
       "preview": "",
-      "description": "ne vedoma huinay"
+      "description": "ne vedoma huinay",
+      "owner": null
     }
   },
   {
@@ -542,7 +802,8 @@
     "fields": {
       "course_name": "Box",
       "preview": "",
-      "description": null
+      "description": null,
+      "owner": null
     }
   },
   {
@@ -553,7 +814,8 @@
       "description": null,
       "preview": "",
       "video": null,
-      "course": 5
+      "course": 5,
+      "owner": null
     }
   },
   {
@@ -564,7 +826,8 @@
       "description": null,
       "preview": "",
       "video": null,
-      "course": 5
+      "course": 5,
+      "owner": null
     }
   },
   {
@@ -575,7 +838,8 @@
       "description": null,
       "preview": "",
       "video": null,
-      "course": 6
+      "course": 6,
+      "owner": null
     }
   },
   {
@@ -586,7 +850,8 @@
       "description": null,
       "preview": "",
       "video": null,
-      "course": 6
+      "course": 6,
+      "owner": null
     }
   }
 ]

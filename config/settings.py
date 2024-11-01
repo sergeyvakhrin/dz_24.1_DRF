@@ -58,7 +58,7 @@ REST_FRAMEWORK = {
     ),
     # Настройки JWT-токенов
     'DEFAULT_AUTHENTICATION_CLASSES': ['rest_framework_simplejwt.authentication.JWTAuthentication',],
-    'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.AllowAny',], # закрывать во view
+    'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.IsAuthenticated',], # AllowAny закрывать во view
                                                      # IsAuthenticated закрыть от всех не авторезированных
 }
 # Настройки срока действия токенов

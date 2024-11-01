@@ -10,12 +10,14 @@
       "last_name": "",
       "is_staff": false,
       "is_active": true,
-      "date_joined": "2024-10-30T09:26:25.334Z",
+      "date_joined": "2024-10-30T09:26:25Z",
       "email": "test1@test1.ru",
       "phone": null,
       "avatar": "",
       "country": null,
-      "groups": [],
+      "groups": [
+        1
+      ],
       "user_permissions": []
     }
   },
@@ -30,12 +32,14 @@
       "last_name": "",
       "is_staff": false,
       "is_active": true,
-      "date_joined": "2024-10-30T09:26:57.286Z",
+      "date_joined": "2024-10-30T09:26:57Z",
       "email": "test2@test2.ru",
       "phone": null,
       "avatar": "",
       "country": null,
-      "groups": [],
+      "groups": [
+        3
+      ],
       "user_permissions": []
     }
   },
@@ -50,12 +54,14 @@
       "last_name": "",
       "is_staff": false,
       "is_active": true,
-      "date_joined": "2024-10-30T09:27:03.663Z",
+      "date_joined": "2024-10-30T09:27:03Z",
       "email": "test3@test3.ru",
       "phone": null,
       "avatar": "",
       "country": null,
-      "groups": [],
+      "groups": [
+        4
+      ],
       "user_permissions": []
     }
   },
@@ -64,14 +70,36 @@
     "pk": 5,
     "fields": {
       "password": "pbkdf2_sha256$870000$1uyNLrOH5qvatiZDbQPCjt$aefvUhKGZMymEU2ZO2BbxWfKb+1Q+zFFtI8l/Hw9/48=",
-      "last_login": null,
+      "last_login": "2024-10-31T12:43:07Z",
       "is_superuser": true,
       "first_name": "Admin",
       "last_name": "SkyPro",
       "is_staff": true,
       "is_active": true,
-      "date_joined": "2024-10-31T07:11:29.034Z",
+      "date_joined": "2024-10-31T07:11:29Z",
       "email": "admin@sky.pro",
+      "phone": null,
+      "avatar": "",
+      "country": null,
+      "groups": [
+        2
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 6,
+    "fields": {
+      "password": "pbkdf2_sha256$870000$cjiJnWQzIceC41ee9r52Rq$E+V+7JogiGIV0rjM2dkgdQHrVNvsOGG6VDvPe7pLM3w=",
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-10-31T13:15:03.751Z",
+      "email": "test4@test4.ru",
       "phone": null,
       "avatar": "",
       "country": null,
@@ -88,7 +116,7 @@
       "paid_lesson": 2,
       "payment_amount": 1000,
       "payment_method": null,
-      "payment_date": "2024-10-30"
+      "payment_date": "2024-10-31"
     }
   },
   {
@@ -100,7 +128,7 @@
       "paid_lesson": 3,
       "payment_amount": 1000,
       "payment_method": null,
-      "payment_date": "2024-10-30"
+      "payment_date": "2024-10-31"
     }
   },
   {
@@ -112,7 +140,7 @@
       "paid_lesson": 2,
       "payment_amount": 2000,
       "payment_method": null,
-      "payment_date": "2024-10-30"
+      "payment_date": "2024-10-31"
     }
   },
   {
@@ -124,7 +152,7 @@
       "paid_lesson": 3,
       "payment_amount": 2000,
       "payment_method": null,
-      "payment_date": "2024-10-30"
+      "payment_date": "2024-10-31"
     }
   },
   {
@@ -136,7 +164,7 @@
       "paid_lesson": 4,
       "payment_amount": 5000,
       "payment_method": null,
-      "payment_date": "2024-10-30"
+      "payment_date": "2024-10-31"
     }
   },
   {
@@ -148,7 +176,7 @@
       "paid_lesson": 5,
       "payment_amount": 7000,
       "payment_method": null,
-      "payment_date": "2024-10-30"
+      "payment_date": "2024-10-31"
     }
   }
 ]
