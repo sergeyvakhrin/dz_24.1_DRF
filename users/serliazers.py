@@ -18,7 +18,7 @@ class PaymentHistorySerializer(serializers.ModelSerializer):
 
 class UserSerializer(serializers.ModelSerializer):
     # Добавление истории платежей
-    payments_list = PaymentHistorySerializer(source='payments_set', many=True)
+    payments_list = PaymentHistorySerializer(source='payments_set', many=True, read_only=True)
 
     class Meta:
         model = User
