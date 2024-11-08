@@ -60,6 +60,9 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': ['rest_framework_simplejwt.authentication.JWTAuthentication',],
     'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.IsAuthenticated',], # AllowAny закрывать во view
                                                      # IsAuthenticated закрыть от всех не авторезированных
+
+    # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination', # Пагинация по умолчанию для всего проекта
+
 }
 # Настройки срока действия токенов
 SIMPLE_JWT = {

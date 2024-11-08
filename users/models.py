@@ -36,3 +36,18 @@ class Payments(models.Model):
     class Meta:
         verbose_name = 'Оплата'
         verbose_name_plural = 'Оплаты'
+
+
+class Subscription(models.Model):
+    """ Класс модели подписка на курс """
+    subscription_name = models.CharField(max_length=100, verbose_name='Подписка', help_text='Укажите название подписки', default='Подписка')
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, verbose_name='Пользователь подписки', help_text='Укажите пользователя подписки', related_name='subsuser')
+    course = models.ForeignKey(Course, on_delete=models.SET_NULL, null=True, blank=True, verbose_name='Подписка на курс', help_text='Укажите курс подписки', related_name='subscourse')
+    subscription_sign = models.BooleanField(default=False, verbose_name='Признак подписки')
+
+    class Meta:
+        verbose_name = 'Подписка'
+        verbose_name_plural = 'Подписки'
+
+    def __str__(self):
+        return f'{self.user} : {self.course}'

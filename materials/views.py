@@ -2,13 +2,20 @@ from rest_framework import viewsets, generics
 from rest_framework.permissions import IsAuthenticated
 
 from materials.models import Course, Lesson
-from materials.serliazers import CourseSerializer, LessonSerializer
+from materials.paginations import CustomPagination
+from materials.serliazers import CourseSerializer, LessonSerializer, CourseRetrieveSerializer
 from users.permissions import IsModer, IsOwner
 
 
 class CourseViewSet(viewsets.ModelViewSet):
     serializer_class = CourseSerializer
     queryset = Course.objects.all()
+    pagination_class = CustomPagination
+
+    def get_serializer_class(self):
+        if self.action == 'retrieve':
+            return CourseRetrieveSerializer
+        return CourseSerializer
 
     def perform_create(self, serializer):
         """ Присваиваем создателя owner """
@@ -41,6 +48,7 @@ class LessonCreateAPIView(generics.CreateAPIView):
 class LessonListAPIView(generics.ListAPIView):
     serializer_class = LessonSerializer
     queryset = Lesson.objects.all()
+    pagination_class = CustomPagination
 
 
 class LessonRetrieveAPIView(generics.RetrieveAPIView):

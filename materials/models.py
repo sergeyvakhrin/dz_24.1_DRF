@@ -2,6 +2,7 @@ from django.db import models
 
 from config import settings
 
+
 NULLABLE = {'null': True, "blank": True}
 
 
@@ -34,5 +35,6 @@ class Lesson(models.Model):
     class Meta:
         verbose_name = 'Урок'
         verbose_name_plural = 'Уроки'
+
 
 
