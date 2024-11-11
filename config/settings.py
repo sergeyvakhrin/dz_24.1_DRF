@@ -26,6 +26,8 @@ load_dotenv(BASE_DIR / '.env', override=True)
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY')
 
+STRIPE_API_KEY=os.getenv('STRIPE_API_KEY')
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -45,6 +47,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_filters',
     'rest_framework_simplejwt',
+    'drf_yasg',
+    'corsheaders',
+
 
     'users',
     'materials',
@@ -78,6 +83,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -162,3 +169,10 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 AUTH_USER_MODEL = 'users.User'
+
+# CORS_ALLOWED_ORIGINS = [
+#     '<http://localhost:8000>',  # Замените на адрес вашего фронтенд-сервера
+# ]
+#
+# CORS_ALLOW_ALL_ORIGINS = False  # запрещает не прописанным серверам обращаться
+
