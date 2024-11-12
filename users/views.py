@@ -2,14 +2,14 @@ from django.shortcuts import render
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets, generics
 from rest_framework.filters import SearchFilter, OrderingFilter
-from rest_framework.generics import CreateAPIView, get_object_or_404
+from rest_framework.generics import CreateAPIView, get_object_or_404, RetrieveAPIView
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 
 from materials.models import Course
 from users.models import User, Payments, Subscription
 from users.serliazers import UserSerializer, PaymentsSerializer, SubscriptionSerializer
-from users.services import create_stripe_product, create_stripe_price, create_stripe_session
+from users.services import create_stripe_product, create_stripe_price, create_stripe_session, get_status_payment
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -76,7 +76,6 @@ class PaymentsCreateAPIView(CreateAPIView):
 
     def perform_create(self, serializer):
         payment = serializer.save(user=self.request.user)
-        print(vars(payment))
         course = Course.objects.get(pk=payment.paid_course_id)
         product = create_stripe_product(course)
         # amount = convert_rub_to_usd(payment.payment_amount)
@@ -84,22 +83,26 @@ class PaymentsCreateAPIView(CreateAPIView):
         session_id, link = create_stripe_session(product, price)
         payment.session_id = session_id
         payment.link = link
+
         payment.save()
 
 
+class PaymentsRetrieveAPIView(RetrieveAPIView):
+    """ Проверка статуса платежа """
+    serializer_class = PaymentsSerializer
+    queryset = Payments.objects.all()
 
+    def get(self, request, *args, **kwargs):
 
+        # Получаю объект смотрю print(vars(request))
+        paymant_id = request.parser_context['kwargs'].get('pk')
+        paymant = Payments.objects.get(pk=paymant_id)
 
+        # Запрашиваю данные по платежу
+        status = get_status_payment(paymant.session_id)
 
+        # Присваиваю статус платежа
+        paymant.status_pay = status.get('payment_status')
+        paymant.save()
 
-
-
-
-
-
-
-
-
-
-
-
+        return super().get(request)

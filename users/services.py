@@ -43,3 +43,8 @@ def create_stripe_session(product, price):
     )
     return session.get('id'), session.get('url')
 
+
+def get_status_payment(session_id):
+    """ Получаем статус платежа в страйпе """
+    return stripe.checkout.Session.retrieve(session_id)
+

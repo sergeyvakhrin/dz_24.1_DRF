@@ -6,4 +6,7 @@ admin.site.register(User)
 
 admin.site.register(Subscription)
 
-admin.site.register(Payments)
+
+@admin.register(Payments)
+class PaymentsAdmin(admin.ModelAdmin):
+    list_display = ['id', 'payment_amount', 'session_id', 'status_pay']
