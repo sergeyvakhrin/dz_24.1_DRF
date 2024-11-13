@@ -5,6 +5,7 @@ from materials.apps import MaterialsConfig
 from materials.views import CourseViewSet, LessonCreateAPIView, LessonListAPIView, LessonRetrieveAPIView, \
     LessonUpdateAPIView, LessonDestroyAPIView
 
+
 app_name = MaterialsConfig.name
 
 router = DefaultRouter()

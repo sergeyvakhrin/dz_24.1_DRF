@@ -2,9 +2,15 @@ from django.contrib import admin
 
 from users.models import User, Subscription, Payments
 
-admin.site.register(User)
+@admin.register(User)
+class UserAdmin(admin.ModelAdmin):
+    list_display = ['id', 'email']
+    list_display_links = ['id', 'email']
 
-admin.site.register(Subscription)
+
+@admin.register(Subscription)
+class SubscriptionAdmin(admin.ModelAdmin):
+    list_display = ['id', 'subscription_name', 'user', 'course', 'subscription_sign']
 
 
 @admin.register(Payments)
