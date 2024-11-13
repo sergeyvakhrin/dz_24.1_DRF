@@ -1,10 +1,13 @@
 from rest_framework import viewsets, generics
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 
 from materials.models import Course, Lesson
 from materials.paginations import CustomPagination
 from materials.serliazers import CourseSerializer, LessonSerializer, CourseRetrieveSerializer
+from users.models import User
 from users.permissions import IsModer, IsOwner
+
+from materials.tasks import send_change_subs
 
 
 class CourseViewSet(viewsets.ModelViewSet):
@@ -32,6 +35,20 @@ class CourseViewSet(viewsets.ModelViewSet):
         elif self.action == "destroy":
             self.permission_classes = (~IsModer | IsOwner, )
         return super().get_permissions()
+
+
+class CourseUpdateAPIView(generics.UpdateAPIView):
+    serializer_class = CourseSerializer
+    queryset = Course.objects.all()
+    permission_classes = (AllowAny, )
+
+    def get_queryset(self):
+        """ Получаем список подписчиков курса """
+        course_id = self.kwargs.get('pk')
+        course = Course.objects.get(pk=course_id)
+        users = User.objects.filter()
+        send_change_subs.delay(course.course_name, course.user.email)
+        return super().get_queryset()
 
 
 class LessonCreateAPIView(generics.CreateAPIView):

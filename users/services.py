@@ -1,4 +1,8 @@
 import stripe
+from celery import shared_task
+
+from config.settings import EMAIL_HOST_USER
+from django.core.mail import send_mail
 from forex_python.converter import CurrencyRates
 
 from config.settings import STRIPE_API_KEY
@@ -48,9 +52,3 @@ def create_stripe_session(product, price):
 def get_status_payment(session_id):
     """ Получаем статус платежа в страйпе """
     return stripe.checkout.Session.retrieve(session_id)
-
-
-def send_change_subs(email):
-    """ Отправка сообщения об изменении подписки """
-    pass
-

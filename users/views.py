@@ -7,6 +7,7 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 
 from materials.models import Course
+from materials.tasks import send_change_subs
 from users.models import User, Payments, Subscription
 from users.serliazers import UserSerializer, PaymentsSerializer, SubscriptionSerializer
 from users.services import create_stripe_product, create_stripe_price, create_stripe_session, get_status_payment
@@ -67,8 +68,8 @@ class SubscriptionUpdateAPIView(generics.UpdateAPIView):
         """ Получаем список подписчиков курса """
         subs_id = self.kwargs.get('pk')
         subscription = Subscription.objects.get(pk=subs_id)
-        print(subscription.user.email)
-        return Subscription.objects.all()
+        send_change_subs.delay(subscription.subscription_name, subscription.user.email)
+        return super().get_queryset()
 
 
 class PaymentsViewSet(viewsets.ModelViewSet):

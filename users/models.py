@@ -1,3 +1,5 @@
+import datetime
+
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
@@ -9,7 +11,7 @@ NULLABLE = {'null': True, "blank": True}
 class User(AbstractUser):
     username = None
     email = models.CharField(max_length=150, verbose_name='Почта', help_text='Введите почту', unique=True)
-
+    last_login = models.DateTimeField(**NULLABLE, auto_now_add=True, verbose_name='Дата последнего входа', help_text='Введите дату последнего входа')
     phone = models.CharField(max_length=35, verbose_name='Телефон', help_text='Введите номер телефона', **NULLABLE)
     avatar = models.ImageField(upload_to='users/avatar', verbose_name='Фото', help_text='Загрузите фото', **NULLABLE)
     country = models.CharField(max_length=50, verbose_name='Страна', help_text='Укажите страну', **NULLABLE)
