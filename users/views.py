@@ -28,6 +28,11 @@ class UserCreateAPIView(CreateAPIView):
         user.save()
 
 
+class SubscriptionListAPIView(generics.ListAPIView):
+    serializer_class = SubscriptionSerializer
+    queryset = Subscription.objects.all()
+
+
 class SubscriptionCreateAPIView(generics.CreateAPIView):
     serializer_class = SubscriptionSerializer
     queryset = Subscription.objects.all()
@@ -53,10 +58,17 @@ class SubscriptionCreateAPIView(generics.CreateAPIView):
         return Response({"message": message})
 
 
-# class SubscriptionUpdateAPIView(generics.UpdateAPIView):
-#     serializer_class = SubscriptionSerializer
-#     queryset = Subscription.objects.all()
-#     permission_classes = (IsAuthenticated, )
+class SubscriptionUpdateAPIView(generics.UpdateAPIView):
+    serializer_class = SubscriptionSerializer
+    queryset = Subscription.objects.all()
+    permission_classes = (IsAuthenticated, )
+
+    def get_queryset(self):
+        """ Получаем список подписчиков курса """
+        subs_id = self.kwargs.get('pk')
+        subscription = Subscription.objects.get(pk=subs_id)
+        print(subscription.user.email)
+        return Subscription.objects.all()
 
 
 class PaymentsViewSet(viewsets.ModelViewSet):
@@ -79,7 +91,7 @@ class PaymentsCreateAPIView(CreateAPIView):
         course = Course.objects.get(pk=payment.paid_course_id)
         product = create_stripe_product(course)
         # amount = convert_rub_to_usd(payment.payment_amount)
-        price = create_stripe_price(payment.payment_amount)
+        price = create_stripe_price(payment.payment_amount, product)
         session_id, link = create_stripe_session(product, price)
         payment.session_id = session_id
         payment.link = link

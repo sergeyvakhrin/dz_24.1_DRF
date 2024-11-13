@@ -9,7 +9,7 @@ stripe.api_key = STRIPE_API_KEY
 
 def create_stripe_product(product):
     """ Создает продукт на страйпе """
-    return stripe.Product.create(name=product)
+    return stripe.Product.create(name=product.course_name)
 
 
 # def convert_rub_to_usd(amount):
@@ -22,12 +22,13 @@ def create_stripe_product(product):
 #     return int(amount * rate)
 
 
-def create_stripe_price(amount):
+def create_stripe_price(amount, product):
     """ Создает цену на страйпе """
     return stripe.Price.create(
         currency="usd",
         unit_amount=amount * 100,
-        product_data={"name": 'Payments'},
+        # product_data={"name": 'Payments'},
+        product=product.id
     )
 
 
@@ -47,4 +48,9 @@ def create_stripe_session(product, price):
 def get_status_payment(session_id):
     """ Получаем статус платежа в страйпе """
     return stripe.checkout.Session.retrieve(session_id)
+
+
+def send_change_subs(email):
+    """ Отправка сообщения об изменении подписки """
+    pass
 
