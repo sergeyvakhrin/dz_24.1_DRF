@@ -4,7 +4,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from materials.models import Course, Lesson
 from materials.paginations import CustomPagination
 from materials.serliazers import CourseSerializer, LessonSerializer, CourseRetrieveSerializer
-from users.models import User
+from users.models import User, Subscription
 from users.permissions import IsModer, IsOwner
 
 from materials.tasks import send_change_subs
@@ -44,10 +44,19 @@ class CourseUpdateAPIView(generics.UpdateAPIView):
 
     def get_queryset(self):
         """ Получаем список подписчиков курса """
+
+        # Получаем курс в котором произошли изменения
         course_id = self.kwargs.get('pk')
         course = Course.objects.get(pk=course_id)
-        users = User.objects.filter()
-        send_change_subs.delay(course.course_name, course.user.email)
+
+        # Получаем подписки в которых изменилось содержание курса
+        subscription = Subscription.objects.filter(course=course)
+        print(subscription)
+        email_list = []
+        for subs in subscription:
+            email_list.append(subs.user.email)
+
+        send_change_subs.delay(course.course_name, email_list)
         return super().get_queryset()
 
 
