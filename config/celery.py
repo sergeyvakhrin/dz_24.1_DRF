@@ -1,6 +1,11 @@
 from __future__ import absolute_import, unicode_literals
+
+# import eventlet # для работы на винде
+# eventlet.monkey_patch() # для работы на винде
+
 import os
 from celery import Celery
+
 
 # Установка переменной окружения для настроек проекта
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
