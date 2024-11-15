@@ -64,12 +64,12 @@ class SubscriptionUpdateAPIView(generics.UpdateAPIView):
     queryset = Subscription.objects.all()
     permission_classes = (IsAuthenticated, )
 
-    def get_queryset(self):
-        """ Получаем список подписчиков курса """
-        subs_id = self.kwargs.get('pk')
-        subscription = Subscription.objects.get(pk=subs_id)
-        send_change_subs.delay(subscription.subscription_name, subscription.user.email)
-        return super().get_queryset()
+    # def get_queryset(self):
+    #     """ Получаем список подписчиков курса """
+    #     subs_id = self.kwargs.get('pk')
+    #     subscription = Subscription.objects.get(pk=subs_id)
+    #     send_change_subs.delay(subscription.subscription_name, subscription.user.email)
+    #     return super().get_queryset()
 
 
 class PaymentsViewSet(viewsets.ModelViewSet):

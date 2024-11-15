@@ -30,6 +30,7 @@ class Lesson(models.Model):
                               help_text='Укажите создателя урока', **NULLABLE)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания', **NULLABLE)
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Дата последнего изменения', **NULLABLE)
+    email_date = models.DateTimeField(**NULLABLE, verbose_name='Дата сообщения об изменении')
 
     def __str__(self):
         return f'{self.lesson_name}'
