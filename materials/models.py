@@ -28,6 +28,8 @@ class Lesson(models.Model):
     course = models.ForeignKey(Course, on_delete=models.SET_NULL, **NULLABLE, help_text='Укажите курс', verbose_name='Курс')
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, verbose_name='Создатель урока',
                               help_text='Укажите создателя урока', **NULLABLE)
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания', **NULLABLE)
+    updated_at = models.DateTimeField(auto_now=True, verbose_name='Дата последнего изменения', **NULLABLE)
 
     def __str__(self):
         return f'{self.lesson_name}'
