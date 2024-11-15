@@ -4,7 +4,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from materials.models import Course, Lesson
 from materials.paginations import CustomPagination
 from materials.serliazers import CourseSerializer, LessonSerializer, CourseRetrieveSerializer
-from materials.services import get_subs_changes
+from materials.services import get_subs_changes, get_lesson_changes
 from users.permissions import IsModer, IsOwner
 
 from materials.tasks import send_change_subs
@@ -47,7 +47,7 @@ class CourseUpdateAPIView(generics.UpdateAPIView):
         # Получаем курс в котором произошли изменения
         course_id = self.kwargs.get('pk')
         course = Course.objects.get(pk=course_id)
-        # Получаем подписки в которых изменилось содержание курса
+        # Получаем список подписчиков на подписки в которых изменилось содержание курса
         email_list = get_subs_changes(course)
         # Отдаем в рассылку асинхронно через celery
         send_change_subs.delay(course.course_name, email_list)
@@ -81,6 +81,16 @@ class LessonUpdateAPIView(generics.UpdateAPIView):
     serializer_class = LessonSerializer
     queryset = Lesson.objects.all()
     permission_classes = (IsAuthenticated, IsModer | IsOwner, )
+
+    def get_queryset(self):
+        """ Проверяем давность последнего изменения Урока """
+        lesson_id = self.kwargs.get('pk')
+        lesson = Lesson.objects.get(pk=lesson_id)
+        # Получаем список подписчиков на подписки в которых изменилось содержание курса
+        email_list = get_lesson_changes(lesson)
+        # Отдаем в рассылку асинхронно через celery
+        send_change_subs.delay(lesson.lesson_name, email_list)
+        return super().get_queryset()
 
 
 class LessonDestroyAPIView(generics.DestroyAPIView):

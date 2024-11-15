@@ -29,7 +29,7 @@ def send_change_subs(subscription_name, email_list):
 @shared_task
 def check_last_login():
     """ Для периодической проверки последнего входа """
-    print("проверка last_login")
+    print("Проверка last_login")
     date = datetime.datetime.now()
     users = User.objects.all()
     for user in users:
@@ -40,6 +40,8 @@ def check_last_login():
         else:
             if user.last_login > user.date_joined + timedelta(days=30):
                 user.is_active = False
+
+
 
 
 
