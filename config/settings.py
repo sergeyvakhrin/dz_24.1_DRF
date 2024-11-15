@@ -199,7 +199,10 @@ CELERY_BEAT_SCHEDULE = {
         'task': 'materials.tasks.check_last_login', # Путь к задаче
         'schedule': timedelta(days=1),  # Расписание выполнения задачи (например, каждый день)
     },
-
+    'check_update_lesson': {
+        'task': 'materials.tasks.check_update_lesson', # Путь к задаче
+        'schedule': timedelta(hours=1),  # Расписание выполнения задачи (например, каждый час)
+    },
 
 }
 
