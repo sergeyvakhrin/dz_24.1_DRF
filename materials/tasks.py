@@ -45,16 +45,18 @@ def check_last_login():
 
 @shared_task
 def check_update_lesson():
-    """ Проверяем наличие изменений за последние 4 часа. И если изменений не было, отправляем письмо """
+    """ Проверяем наличие изменений за последние 4 часа. И если изменения были, отправляем письма """
     print("Проверяем наличие изменений за последние 4 часа")
     date = datetime.datetime.now()
     lesson = Lesson.objects.all()
+    email_list = []
     for les in lesson:
-        if date > les.updated_at + timedelta(hours=4):
-            send_mail(
-                subject=f'Остался без внимания урок: {les.lesson_name}',
-                message=f'Необходимо продолжить работу над улучшением урока'
-                        f'Вы остановились на {les.description[:100]}',
-                from_email=EMAIL_HOST_USER,
-                recipient_list=[les.owner.email]
-            )
+        if date > les.email_date + timedelta(hours=4) and date > les.updated_ta + timedelta(hours=4):
+            les.email_date = date
+            email_list.append(les.owner.email)
+    send_mail(
+        subject=f'Произошли изменения в: {les.lesson_name}',
+        message=f'Ознакомьтесь с изменениями {les.description}',
+        from_email=EMAIL_HOST_USER,
+        recipient_list=email_list
+    )
