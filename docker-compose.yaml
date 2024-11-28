@@ -5,6 +5,8 @@ services:
   redis:
     image: redis:latest
     restart: on-failure
+    expose:
+      - "6379"
 
   db:
     image: postgres:16-alpine
@@ -32,6 +34,8 @@ services:
         condition: service_healthy
     volumes:
       - .:/app
+    env_file:
+      - .env
 
   celery:
     build: .
